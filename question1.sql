@@ -1,0 +1,2 @@
+use pokemon;
+with myquery as (select type_1, name, total , rank() over (partition by type_1 ORDER by total desc) as ranks from pokemonstats) select type_1, name, total, ranks from myquery where ranks<=3;
